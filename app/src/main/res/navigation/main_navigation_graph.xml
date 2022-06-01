@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/ProfileFragment">
+
+    <fragment
+        android:id="@+id/ProfileFragment"
+        android:name="com.example.baseproject.framework.presentation.features.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/toPhotosFragment"
+            app:destination="@id/PhotosFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/PhotosFragment"
+        android:name="com.example.baseproject.framework.presentation.features.photos.PhotosFragment"
+        android:label="PhotosFragment"
+        tools:layout="@layout/fragment_photos" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            app:nullable="false" />
+    </fragment>
+</navigation>
