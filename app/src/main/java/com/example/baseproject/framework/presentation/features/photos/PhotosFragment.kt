@@ -51,7 +51,7 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
         viewModel.photosDataState.observe(viewLifecycleOwner) {
             when (it) {
                 is Success -> adapter.setPhotos(it.data)
-                is Failure -> showMessage(it.throwable.message ?: "error")
+                is Failure -> showMessage(it.throwable.message ?: getString(R.string.error_occurred))
                 is Loading -> {}
             }
         }

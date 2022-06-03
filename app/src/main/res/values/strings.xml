@@ -4,6 +4,7 @@
     <string name="my_Albums">My Albums</string>
     <string name="image">image</string>
     <string name="profile">Profile</string>
+    <string name="error_occurred">Error occurred</string>
     <string name="share_App">Share App</string>
     <string name="you_do_not_have_application_to_handle_sharing_function">You don\'t have application to handle sharing function</string>
 </resources>

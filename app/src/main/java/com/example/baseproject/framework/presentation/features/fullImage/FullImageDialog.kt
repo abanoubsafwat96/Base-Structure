@@ -20,6 +20,10 @@ class FullImageDialog @Inject constructor() : BaseDialogFragment<DialogFullImage
         initClickListeners()
     }
 
+    private fun initUI() {
+        binding.imageUrl = args.imageUrl
+    }
+
     private fun initClickListeners() {
         binding.shareBtn.setOnClickListener {
             val intent = getShareIntent()
@@ -37,10 +41,6 @@ class FullImageDialog @Inject constructor() : BaseDialogFragment<DialogFullImage
         intent.putExtra(Intent.EXTRA_TEXT, args.imageUrl)
         Intent.createChooser(intent, getString(R.string.share_App))
         return intent
-    }
-
-    private fun initUI() {
-        binding.imageUrl = args.imageUrl
     }
 
     override fun getLayoutResId(): Int = R.layout.dialog_full_image

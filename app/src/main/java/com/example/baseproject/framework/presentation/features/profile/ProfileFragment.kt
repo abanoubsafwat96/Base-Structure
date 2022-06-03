@@ -23,10 +23,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private val clickListener = object : OnItemClickListener<Album> {
         override fun onItemClicked(item: Album) {
             findNavController().navigateSafe(
-                ProfileFragmentDirections.toPhotosFragment(
-                    item.id,
-                    item.title
-                )
+                ProfileFragmentDirections.toPhotosFragment(item.id, item.title)
             )
         }
     }
@@ -51,14 +48,18 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                     binding.profile = profile
                     viewModel.getUserAlbums(profile.id)
                 }
-                is Failure -> showMessage(it.throwable.message ?: "error")
+                is Failure -> showMessage(
+                    it.throwable.message ?: getString(R.string.error_occurred)
+                )
                 is Loading -> {}
             }
         }
         viewModel.albumsDataState.observe(viewLifecycleOwner) {
             when (it) {
                 is Success -> adapter.addAlbums(it.data)
-                is Failure -> showMessage(it.throwable.message ?: "error")
+                is Failure -> showMessage(
+                    it.throwable.message ?: getString(R.string.error_occurred)
+                )
                 is Loading -> {}
             }
         }
