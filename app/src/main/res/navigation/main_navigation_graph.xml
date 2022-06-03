@@ -22,7 +22,7 @@
         android:label="PhotosFragment"
         tools:layout="@layout/fragment_photos" >
         <argument
-            android:name="id"
+            android:name="albumId"
             app:argType="integer"
             app:nullable="false" />
     </fragment>

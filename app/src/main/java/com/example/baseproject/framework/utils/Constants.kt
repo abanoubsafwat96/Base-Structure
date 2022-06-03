@@ -5,6 +5,7 @@ interface Constants {
         object EndPoints {
             const val USERS = "users"
             const val ALBUMS = "albums"
+            const val PHOTOS = "photos"
         }
     }
 }

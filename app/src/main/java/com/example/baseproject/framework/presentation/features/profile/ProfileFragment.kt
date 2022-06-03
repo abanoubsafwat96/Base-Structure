@@ -33,6 +33,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     private fun initUI() {
         adapter.setListener(clickListener)
+        binding.albumsRv.setHasFixedSize(true)
         binding.albumsRv.adapter = adapter
     }
 

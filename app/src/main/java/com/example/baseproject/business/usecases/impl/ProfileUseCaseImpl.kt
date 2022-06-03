@@ -17,4 +17,7 @@ class ProfileUseCaseImpl @Inject constructor(private val profileRepository: Prof
         emit(profileRepository.getAlbums(profileId))
     }.flowOn(Dispatchers.IO)
 
+    override suspend fun getPhotos(albumId: Int) = flow {
+        emit(profileRepository.getPhotos(albumId))
+    }.flowOn(Dispatchers.IO)
 }
