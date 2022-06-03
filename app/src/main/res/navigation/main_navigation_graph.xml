@@ -9,7 +9,7 @@
         android:id="@+id/ProfileFragment"
         android:name="com.example.baseproject.framework.presentation.features.profile.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
 
         <action
             android:id="@+id/toPhotosFragment"
@@ -20,10 +20,16 @@
         android:id="@+id/PhotosFragment"
         android:name="com.example.baseproject.framework.presentation.features.photos.PhotosFragment"
         android:label="PhotosFragment"
-        tools:layout="@layout/fragment_photos" >
+        tools:layout="@layout/fragment_photos">
+
         <argument
             android:name="albumId"
             app:argType="integer"
+            app:nullable="false" />
+
+        <argument
+            android:name="albumName"
+            app:argType="string"
             app:nullable="false" />
     </fragment>
 </navigation>

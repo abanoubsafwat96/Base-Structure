@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlinx.coroutines.flow.collect
 
 @HiltViewModel
 class PhotosViewModel @Inject constructor(

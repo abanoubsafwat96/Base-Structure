@@ -7,7 +7,6 @@
         <variable
             name="profile"
             type="com.example.baseproject.business.entities.Profile" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,14 +15,13 @@
         android:padding="8dp"
         tools:context=".framework.presentation.features.home.HomeFragment">
 
-
         <TextView
             android:id="@+id/UserNameTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{profile.name}"
-            android:textSize="30sp"
             android:textColor="@color/black"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,9 +29,9 @@
 
         <TextView
             android:id="@+id/addressTv"
+            address="@{profile.address}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            address="@{profile.address}"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +42,8 @@
             android:id="@+id/myAlbumsTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/my_Albums"
             android:layout_marginTop="10dp"
+            android:text="@string/my_Albums"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

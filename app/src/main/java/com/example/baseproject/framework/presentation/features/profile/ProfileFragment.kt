@@ -22,7 +22,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     private val clickListener = object : OnItemClickListener<Album> {
         override fun onItemClicked(item: Album) {
-            findNavController().navigateSafe(ProfileFragmentDirections.toPhotosFragment(item.id))
+            findNavController().navigateSafe(
+                ProfileFragmentDirections.toPhotosFragment(
+                    item.id,
+                    item.title
+                )
+            )
         }
     }
 
@@ -32,6 +37,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun initUI() {
+        mainViewModel.updateToolbarName(getString(R.string.profile))
         adapter.setListener(clickListener)
         binding.albumsRv.setHasFixedSize(true)
         binding.albumsRv.adapter = adapter
