@@ -1,15 +1,19 @@
 package com.example.baseproject.framework.presentation.features.photos
 
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.baseproject.R
 import com.example.baseproject.databinding.FragmentPhotosBinding
 import com.example.baseproject.framework.presentation.features.base.BaseFragment
 import com.example.baseproject.framework.utils.DataState.*
+import com.example.baseproject.framework.utils.debounceFlow
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.FlowPreview
 import javax.inject.Inject
 
+@FlowPreview
 @AndroidEntryPoint
 class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
     private val viewModel by viewModels<PhotosViewModel>()
@@ -25,6 +29,7 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
 
     private fun initUI() {
         mainViewModel.updateToolbarName(args.albumName)
+        binding.viewModel = viewModel
         binding.photosRv.layoutManager = GridLayoutManager(context, 3)
         binding.photosRv.setHasFixedSize(true)
         binding.photosRv.adapter = adapter
@@ -33,10 +38,13 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding>() {
     private fun subscribeOnObservers() {
         viewModel.photosDataState.observe(viewLifecycleOwner) {
             when (it) {
-                is Success -> adapter.addPhotos(it.data)
+                is Success -> adapter.setPhotos(it.data)
                 is Failure -> showMessage(it.throwable.message ?: "error")
                 is Loading -> {}
             }
+        }
+        viewModel.searchTxtLiveData.debounceFlow(lifecycleScope) { query ->
+            viewModel.search(query)
         }
     }
 

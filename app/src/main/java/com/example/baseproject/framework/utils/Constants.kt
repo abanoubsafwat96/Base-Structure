@@ -8,4 +8,8 @@ interface Constants {
             const val PHOTOS = "photos"
         }
     }
+
+    object Search {
+        const val DEBOUNCE_TIME = 500L
+    }
 }

@@ -8,7 +8,7 @@ import com.example.baseproject.databinding.FragmentProfileBinding
 import com.example.baseproject.framework.presentation.callback.OnItemClickListener
 import com.example.baseproject.framework.presentation.features.base.BaseFragment
 import com.example.baseproject.framework.utils.DataState.*
-import com.example.baseproject.framework.utils.Extensions.getOneRandom
+import com.example.baseproject.framework.utils.getOneRandom
 import com.example.baseproject.framework.utils.navigateSafe
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

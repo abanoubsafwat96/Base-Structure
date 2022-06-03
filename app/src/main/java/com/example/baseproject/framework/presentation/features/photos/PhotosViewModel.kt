@@ -18,8 +18,12 @@ class PhotosViewModel @Inject constructor(
 
     private var albumId: Int? = stateHandle.get<Int>("albumId")
 
+    private val allPhotosDataState: MutableLiveData<List<Photo>> = MutableLiveData()
+
     private val _photosDataState: MutableLiveData<DataState<List<Photo>>> = MutableLiveData()
     val photosDataState: LiveData<DataState<List<Photo>>> get() = _photosDataState
+
+    var searchTxtLiveData: MutableLiveData<String> = MutableLiveData()
 
     init {
         getPhotos()
@@ -31,8 +35,20 @@ class PhotosViewModel @Inject constructor(
                 useCase.getPhotos(id)
                     .onStart { _photosDataState.value = DataState.Loading }
                     .catch { _photosDataState.value = DataState.Failure(it) }
-                    .collect { _photosDataState.value = DataState.Success(it) }
+                    .collect {
+                        _photosDataState.value = DataState.Success(it)
+                        allPhotosDataState.value = it
+                    }
             }
+        }
+    }
+
+    fun search(query: String) {
+        if (query.isEmpty())
+            allPhotosDataState.value?.let { _photosDataState.value = DataState.Success(it) }
+        else {
+            val searchList = allPhotosDataState.value?.filter { it.title.startsWith(query) }?.toList()
+            searchList?.let { _photosDataState.value = DataState.Success(it) }
         }
     }
 }

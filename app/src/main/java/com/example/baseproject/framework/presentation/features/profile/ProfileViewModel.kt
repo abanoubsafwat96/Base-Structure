@@ -45,5 +45,4 @@ class ProfileViewModel @Inject constructor(private val useCase: ProfileUseCase) 
                 .collect { _albumsDataState.value = DataState.Success(it) }
         }
     }
-
 }

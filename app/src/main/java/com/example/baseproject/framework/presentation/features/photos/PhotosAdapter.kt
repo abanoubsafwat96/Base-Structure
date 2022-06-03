@@ -10,9 +10,9 @@ class PhotosAdapter @Inject constructor() : RecyclerView.Adapter<PhotoHolder>() 
     private var photos = mutableListOf<Photo>()
     private lateinit var listener: OnItemClickListener<Photo>
 
-    fun addPhotos(list: List<Photo>) {
-        this.photos.addAll(list)
-        notifyItemRangeInserted(itemCount, itemCount + list.size)
+    fun setPhotos(list: List<Photo>) {
+        this.photos = list.toMutableList()
+        notifyDataSetChanged()
     }
 
     fun setListener(listener: OnItemClickListener<Photo>) {
