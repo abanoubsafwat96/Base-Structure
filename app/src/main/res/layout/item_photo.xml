@@ -7,9 +7,14 @@
         <variable
             name="photo"
             type="com.example.baseproject.business.entities.Photo" />
+
+        <variable
+            name="listener"
+            type="com.example.baseproject.framework.presentation.callback.OnItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:onClick="@{() -> listener.onItemClicked(photo)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

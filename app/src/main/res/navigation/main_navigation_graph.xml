@@ -31,5 +31,19 @@
             android:name="albumName"
             app:argType="string"
             app:nullable="false" />
+
+        <action
+            android:id="@+id/toFullImageDialog"
+            app:destination="@id/FullImageDialog" />
     </fragment>
+
+    <dialog
+        android:id="@+id/FullImageDialog"
+        android:name="com.example.baseproject.framework.presentation.features.fullImage.FullImageDialog"
+        android:label="FullImageDialog">
+        <argument
+            android:name="imageUrl"
+            app:argType="string"
+            app:nullable="false" />
+    </dialog>
 </navigation>

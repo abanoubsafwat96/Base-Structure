@@ -1,9 +1,14 @@
 package com.example.baseproject.framework.utils
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import com.example.baseproject.business.entities.Profile
 import com.example.baseproject.framework.utils.Constants.Search.DEBOUNCE_TIME
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
@@ -28,4 +33,14 @@ fun <T> MutableLiveData<T>.debounceFlow(scope: CoroutineScope, actionToTake: (T)
         .distinctUntilChanged()
         .onEach { query -> actionToTake(query) }
         .launchIn(scope)
+}
+
+@SuppressLint("QueryPermissionsNeeded")
+fun Context.isIntentCanBeHandled(intent: Intent): Boolean {
+    // Get all apps that can handle this intent.
+    return this.packageManager.queryIntentActivities(intent, 0).isNotEmpty()
+}
+
+fun Activity.showSnackBar(msg: String) {
+    Snackbar.make(this.findViewById(android.R.id.content), msg, Snackbar.LENGTH_LONG).show()
 }

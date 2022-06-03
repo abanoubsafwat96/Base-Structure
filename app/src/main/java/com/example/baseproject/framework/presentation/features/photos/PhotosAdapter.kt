@@ -23,7 +23,7 @@ class PhotosAdapter @Inject constructor() : RecyclerView.Adapter<PhotoHolder>() 
         PhotoHolder.from(parent)
 
     override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
-        photos.elementAtOrNull(position)?.let { holder.bind(it) }
+        photos.elementAtOrNull(position)?.let { holder.bind(it,listener) }
     }
 
     override fun getItemCount() = photos.size
