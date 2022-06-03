@@ -36,6 +36,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private fun initUI() {
         mainViewModel.updateToolbarName(getString(R.string.profile))
         adapter.setListener(clickListener)
+        binding.albumsRv.isNestedScrollingEnabled = false
         binding.albumsRv.setHasFixedSize(true)
         binding.albumsRv.adapter = adapter
     }

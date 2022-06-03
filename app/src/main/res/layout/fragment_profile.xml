@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        tools:context=".framework.presentation.features.home.HomeFragment">
+        tools:context=".framework.presentation.features.profile.ProfileFragment">
 
         <TextView
             android:id="@+id/UserNameTv"
@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:text="@{profile.name}"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,6 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
             android:text="@string/my_Albums"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"

@@ -18,7 +18,9 @@ fun ImageView.loadImage(imageUrl: String, placeholder: Drawable?) {
 }
 
 @SuppressLint("SetTextI18n")
-@BindingAdapter(value = ["address"], requireAll = true)
+@BindingAdapter(value = ["address"], requireAll = false)
 fun setAddress(view: TextView, address: Address?) {
-    view.text = "${address?.street} ${address?.suite} ${address?.city} ${address?.zipcode}"
+    address?.let {
+        view.text = "${it.street}, ${it.suite}, ${it.city}, ${it.zipcode}"
+    }
 }
